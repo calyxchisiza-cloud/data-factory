@@ -14,7 +14,7 @@ const loadSpaceScene = async () => {
 function initSpaceScene(THREE, canvas) {
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(42, window.innerWidth / window.innerHeight, 0.1, 100);
-  camera.position.set(0.35, 0.08, 2.4);
+  camera.position.set(0.35, 0.08, 4.8);
   const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true, powerPreference: 'high-performance' });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.7));
   renderer.setSize(window.innerWidth, window.innerHeight);
@@ -197,11 +197,11 @@ function initSpaceScene(THREE, canvas) {
   const colorAttribute = new THREE.BufferAttribute(new Float32Array(shapes[0].colors), 3);
   geometry.setAttribute('position', positionAttribute);
   geometry.setAttribute('color', colorAttribute);
-  const particleMaterial = new THREE.PointsMaterial({ size: window.innerWidth < 700 ? .024 : .02, vertexColors: true, transparent: true, opacity: .95, blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true });
+  const particleMaterial = new THREE.PointsMaterial({ size: window.innerWidth < 700 ? .032 : .026, vertexColors: true, transparent: true, opacity: .95, blending: THREE.AdditiveBlending, depthWrite: false, sizeAttenuation: true });
   const particles = new THREE.Points(geometry, particleMaterial);
   particles.rotation.z = -.18;
   particles.position.x = window.innerWidth < 700 ? .4 : 0;
-  particles.scale.set(1.8, 1.8, 1.8);
+  particles.scale.set(1.12, 1.12, 1.12);
   scene.add(particles);
 
   const starPositions = new Float32Array(900 * 3);
@@ -302,7 +302,7 @@ function initSpaceScene(THREE, canvas) {
     stars.position.x = state.pointerX * .08;
     camera.position.x += ((.5 + state.pointerX * .2 + Math.sin(total * .8) * .28) - camera.position.x) * .035;
     camera.position.y += ((state.pointerY * .12 + Math.cos(total * .7) * .12) - camera.position.y) * .035;
-    camera.position.z += ((2.2 - Math.sin(total * Math.PI / 3) * .4) - camera.position.z) * .035;
+    camera.position.z += ((4.6 - Math.sin(total * Math.PI / 3) * .6) - camera.position.z) * .035;
     camera.lookAt(0, .03, 0);
     if (sceneName) sceneName.textContent = names[Math.min(names.length - 1, Math.round(total))];
     if (sceneProgress) sceneProgress.textContent = `${String(Math.round(state.scroll * 100)).padStart(2, '0')}.00`;
