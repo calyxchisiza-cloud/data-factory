@@ -1,0 +1,11 @@
+{
+  "name": "datafactory-tech-hub",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node server.mjs",
+    "start": "node server.mjs",
+    "build": "node -e \"import('fs').then(({cpSync,mkdirSync})=>{mkdirSync('dist',{recursive:true});cpSync('index.html','dist/index.html');cpSync('styles.css','dist/styles.css');cpSync('app.js','dist/app.js');cpSync('public','dist/public',{recursive:true})})\""
+  }
+}
